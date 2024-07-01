@@ -43,16 +43,17 @@ function CreateNewContent(props: Props) {
 
     }
 
-    const SaveInDb = async (formData: any, slug: any, aiResp: string) => {
+    const SaveInDb = async (formData: any, slug: string | undefined, aiResp: string) => {
         const result = await db.insert(AIOutput).values({
-            formData: formData,
-            templateSlug: slug,
+            formData: JSON.stringify(formData), // Assuming formData should be stringified
+            templateSlug: slug || '', // Handling potential undefined case
             aiResponse: aiOutput,
-            createdBy: user?.primaryEmailAddress?.emailAddress,
+            createdBy: user?.primaryEmailAddress?.emailAddress || '',
             createdAt: new Date().toISOString(),
         });
         console.log(result);
     }
+    
     
 
 
