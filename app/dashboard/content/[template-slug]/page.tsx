@@ -23,9 +23,9 @@ function CreateNewContent(props: Props) {
     {/* @ts-ignore */ }
     
     const selectedTemplate: TEMPLATE | undefined = Templates.find((item) => item.slug === props.params['template-slug']);
-    const [loading, setLoading] = React.useState(false);
+    const [loading, setLoading] = useState(false);
 
-    const [aiOutput, setAiOutput] = React.useState<string>('');
+    const [aiOutput, setAiOutput] = useState<string>('');
     const { user } = useUser();
     const [historyData, setHistoryData] = useState([]);
     const GenerateAIContent = async (formData: any) => {
